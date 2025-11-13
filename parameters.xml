@@ -1,0 +1,15 @@
+<!-- example transmission for joint1 -->
+<transmission name="trans_joint1">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint1"/>
+  <actuator name="joint1_motor">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<!-- ros2_control hardware interface (controller_manager will claim these) -->
+<gazebo>
+  <plugin name="ros2_control_plugin" filename="libgazebo_ros2_control.so">
+    <robotNamespace>/</robotNamespace>
+  </plugin>
+</gazebo>
