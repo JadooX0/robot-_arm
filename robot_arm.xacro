@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!-- 3dof_arm.xacro -->
+<robot name="3dof_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:property name="link_length" value="0.25"/>
+
+  <link name="base_link">
+    <visual><geometry><cylinder length="0.05" radius="0.08"/></geometry></visual>
+    <collision><geometry><cylinder length="0.05" radius="0.08"/></geometry></collision>
+    <inertial><mass value="1.0"/></inertial>
+  </link>
+
+  <!-- joint1 -->
+  <link name="link1">
+    <visual><geometry><box size="${link_length} 0.06 0.06"/></geometry></visual>
+    <collision><geometry><box size="${link_length} 0.06 0.06"/></geometry></collision>
+    <inertial><mass value="0.5"/></inertial>
+  </link>
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="2" lower="-1.57" upper="1.57"/>
+  </joint>
+
+  <!-- joint2 -->
+  <link name="link2">
+    <visual><geometry><box size="${link_length} 0.05 0.05"/></geometry></visual>
+    <collision><geometry><box size="${link_length} 0.05 0.05"/></geometry></collision>
+    <inertial><mass value="0.5"/></inertial>
+  </link>
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="${link_length} 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="2" lower="-1.57" upper="1.57"/>
+  </joint>
+
+  <!-- joint3 (end effector) -->
+  <link name="link3">
+    <visual><geometry><box size="${link_length} 0.04 0.04"/></geometry></visual>
+    <collision><geometry><box size="${link_length} 0.04 0.04"/></geometry></collision>
+    <inertial><mass value="0.3"/></inertial>
+  </link>
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="${link_length} 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="8" velocity="2" lower="-1.57" upper="1.57"/>
+  </joint>
+
+  <!-- Add gazebo/ros2_control tags later for simulation -->
+</robot>
