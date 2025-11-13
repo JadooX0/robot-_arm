@@ -9,7 +9,7 @@
     <inertial><mass value="1.0"/></inertial>
   </link>
 
-  <!-- joint1 -->
+ 
   <link name="link1">
     <visual><geometry><box size="${link_length} 0.06 0.06"/></geometry></visual>
     <collision><geometry><box size="${link_length} 0.06 0.06"/></geometry></collision>
@@ -23,7 +23,7 @@
     <limit effort="10" velocity="2" lower="-1.57" upper="1.57"/>
   </joint>
 
-  <!-- joint2 -->
+  
   <link name="link2">
     <visual><geometry><box size="${link_length} 0.05 0.05"/></geometry></visual>
     <collision><geometry><box size="${link_length} 0.05 0.05"/></geometry></collision>
@@ -37,7 +37,7 @@
     <limit effort="10" velocity="2" lower="-1.57" upper="1.57"/>
   </joint>
 
-  <!-- joint3 (end effector) -->
+  
   <link name="link3">
     <visual><geometry><box size="${link_length} 0.04 0.04"/></geometry></visual>
     <collision><geometry><box size="${link_length} 0.04 0.04"/></geometry></collision>
@@ -51,5 +51,6 @@
     <limit effort="8" velocity="2" lower="-1.57" upper="1.57"/>
   </joint>
 
-  <!-- Add gazebo/ros2_control tags later for simulation -->
+  
 </robot>
+
